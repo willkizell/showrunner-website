@@ -320,34 +320,26 @@ ${blockInputs.join('\n\n')}`;
       outputContainer.style.display = 'flex';
       outputContainer.querySelector('.output-left').innerHTML = '<p>Generating... please wait.</p>';
 
-      let aiContent;
-      try {
-        // 2) Call OpenAI
-        const resp = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type':'application/json',
-            'Authorization':'Bearer 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'
-          },
-          body: JSON.stringify({
-            model: 'gpt-4o',
-            messages: [
-              { role:'system', content:'You generate event announcements and songs.' },
-              { role:'user',   content: prompt }
-            ],
-            temperature: 0.7
-          })
-        });
-        const { choices } = await resp.json();
-        if (!choices || !choices[0]?.message?.content) {
-          throw new Error('Unexpected GPT response');
-        }
-        aiContent = choices[0].message.content;
-      } catch(err) {
-        console.error('OpenAI error:', err);
-        outputContainer.querySelector('.output-left').innerHTML = '<p style="color:#f66">❌ Error generating content. See console.</p>';
-        return;
-      }
+      // REPLACE WITH THIS IN generateWithGPT()
+let aiContent;
+try {
+    // 2) Call your Vercel API route for GPT
+    const resp = await fetch('/api/generate', { // <-- Calling your new API route!
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: prompt }) // Send the prompt to your API
+    });
+    const data = await resp.json(); // It should still return the same format from OpenAI
+
+    if (!resp.ok || !data.choices || !data.choices[0]?.message?.content) {
+      throw new Error(data.message || 'Unexpected response from API');
+    }
+    aiContent = data.choices[0].message.content;
+  } catch(err) {
+    console.error('API generation error:', err);
+    outputContainer.querySelector('.output-left').innerHTML = '<p style="color:#f66">❌ Error generating content. Please try again. If the issue persists, check the console for details.</p>';
+    return;
+  }
 
       // 3) Render the AI output (Spotify on top, then all blocks below)
       const rendered = aiContent
@@ -400,32 +392,26 @@ ${blockInputs.join('\n\n')}`;
     }
 
     async function playAnnouncement(text) {
-      try {
-        const response = await fetch('https://api.elevenlabs.io/v1/text-to-speech/Will', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'xi-api-key': 'sk_16bbdade143a0114935331c7a5d31d519841354b914ef20a'
-          },
-          body: JSON.stringify({
-            text: text,
-            model_id: 'eleven_turbo_v2_5',
-            voice_settings: {
-              stability: 0.5,
-              similarity_boost: 0.8
-            }
-          })
-        });
+      // REPLACE WITH THIS IN playAnnouncement()
+try {
+    const response = await fetch('/api/generate', { // <-- Calling your new API route!
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text }) // Send the text for speech synthesis
+    });
 
-        if (!response.ok) throw new Error('ElevenLabs API error');
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        audio.play();
-      } catch (error) {
-        alert('Error playing announcement. Please check your API key and input.');
-        console.error(error);
-      }
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`API speech synthesis error: ${response.status} - ${errorBody}`);
+    }
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const audio = new Audio(url);
+    audio.play();
+  } catch (error) {
+    alert('Error playing announcement. Please check the console for details.');
+    console.error(error);
+  }
     }
   </script>
 

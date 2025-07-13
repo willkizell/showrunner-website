@@ -1,0 +1,23 @@
+{
+  "name": "showrunner-website",
+  "version": "1.0.0",
+  "description": "Showrunner website with AI-powered event announcements",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["showrunner", "ai", "events", "announcements"],
+  "author": "",
+  "license": "MIT"
+} 
