@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShowRunner | AI Event Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: #000; color: #fff; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #000; }
+    nav a { margin: 0 15px; color: #d1a442; text-decoration: none; font-weight: 600; }
+    .hero { text-align: center; padding: 100px 20px 60px; background: linear-gradient(180deg, #000 60%, #111 100%); }
+    .hero h1 { font-size: 4rem; }
+    .hero span { color: #f8f7f3; }
+    .hero p { margin-top: 16px; font-size: 1.2rem; color: #ccc; }
+    
+    section { padding: 60px 20px; text-align: center; }
+    h2 { font-size: 2.5rem; color: #d1a442; margin-bottom: 20px; }
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .feature-card { background: #111; padding: 20px; border-radius: 10px; width: 300px; text-align: left; }
+    .feature-card h3 { color: #d1a442; margin-bottom: 10px; }
+    .feature-card p { color: #ccc; font-size: 0.95rem; }
+    iframe { border: none; border-radius: 8px; margin-top: 20px; }
+    footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #777; border-top: 1px solid #333; }
+    
+	.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.cta { 
+	margin-top: 30px; 
+	padding: 12px 30px; 
+	background: #d1a442; 
+	color: #111; 
+	border: none; 
+	border-radius: 6px; 
+	font-weight: bold; 
+	cursor: pointer; }
+
+.cta:hover {
+
+ transform: scale(1.05);
+  background-color: #d1a442;
+  box-shadow: 0 8px 20px rgba(209, 164, 100, 0.3); /* gold glow */
+  cursor: pointer;
+}
+
+
+
+.feature-card {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0); /* initial shadow */
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  background-color: #222;
+  box-shadow: 0 8px 20px rgba(209, 164, 66, 0.3); /* gold glow */
+  cursor: pointer;
+}
+
+
+ .use-case-card {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.use-case-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(209, 164, 66, 0.4);
+  background: #222;
+}
+
+.use-case-img {
+  width: 40%;
+  object-fit: cover;
+}
+
+.use-case-content {
+  padding: 30px;
+  text-align: left;
+}
+
+.use-case-title {
+  color: #d1a442;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.use-case-text {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.cursor {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 4rem;
+  color: #d1a442;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+#typewriter {
+  color: #fff;
+  font-weight: 600;
+  font-size: 4rem;
+}
+
+</style>
+
+  </style>
+</head>
+<body>
+
+
+<header>
+ 		 <div class="logo">
+      <strong>
+        <a href="index.html" style="color: #d1a442; text-decoration: none;">ShowRunner▸</a>
+        
+
+        </span></strong></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="DemoMode.html">Get Started</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1><span id="typewriter"></span><span class="cursor">|</span></h1>
+  <p>AI-generated playlists, announcements, and real-time control for your event.</p>
+  <button class="cta" onclick="document.getElementById('usecase').scrollIntoView({behavior: 'smooth'})">See Where We Shine The Most</button>
+</section>
+
+
+<section>
+  <h2>How It Works</h2>
+  <div class="features">
+    <div class="feature-card">
+      <h3>1. Layout Your Event</h3>
+      <p>Tell us what’s happening: cocktail hour, dinner, speeches. We'll handle the rest.</p>
+    </div>
+    <div class="feature-card">
+      <h3>2. Get Custom Content</h3>
+      <p>Our AI generates playlists and announcements tailored to your vibe and timeline.</p>
+    </div>
+    <div class="feature-card">
+      <h3>3. Control in Real-Time</h3>
+      <p>Play/pause music, trigger announcements, and adapt on the fly — all from one dashboard.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Use Cases Section -->
+ <section id="usecase">
+<section style="padding: 60px 40px; text-align: center; background-color: #111;">
+  <h2 style="font-size: 2.5rem; color: #d1a442; margin-bottom: 20px;">Where ShowRunner Shines</h2>
+  <p style="color: #ccc; max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem;">
+    From intimate gatherings to major productions — ShowRunner adapts to any event, big or small. Explore a few of our most popular use cases below.
+  </p>
+
+  <div style="display: flex; flex-direction: column; gap: 40px; max-width: 1000px; margin: auto;">
+
+    <!-- Use Case Cards -->
+<div class="use-case-card">
+  <img src="https://images.unsplash.com/photo-1752110383002-ae8ef5d41756?auto=format&fit=crop&w=600&q=80" alt="Corporate" class="use-case-img">
+  <div class="use-case-content">
+    <h3 class="use-case-title">Corporate Event Flow Manager</h3>
+    <p class="use-case-text">Run seamless transitions between speakers, networking, and breakouts — with automated music and voiceover cues.</p>
+  </div>
+</div>
+
+<div class="use-case-card">
+  <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=600&q=80" alt="Wedding" class="use-case-img">
+  <div class="use-case-content">
+    <h3 class="use-case-title">Wedding MC + DJ Assistant</h3>
+    <p class="use-case-text">Skip the awkward announcements — we generate heartfelt intros, time cues, and soundtrack transitions in real-time.</p>
+  </div>
+</div>
+
+<div class="use-case-card">
+  <img src="https://images.unsplash.com/photo-1648052845307-61eb1450f1bc?auto=format&fit=crop&w=600&q=80" alt="Open Mic" class="use-case-img">
+  <div class="use-case-content">
+    <h3 class="use-case-title">Open Mic / Showcase Curator</h3>
+    <p class="use-case-text">Auto-introduce acts, manage timing, and add vibe with pre-selected music to keep the show flowing smoothly.</p>
+  </div>
+</div>
+
+<div class="use-case-card">
+  <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Trade Shows" class="use-case-img">
+  <div class="use-case-content">
+    <h3 class="use-case-title">Trade Shows & Workshops</h3>
+    <p class="use-case-text">Control booth announcements, segment speakers, and create curated audio that cuts through the noise.</p>
+  </div>
+</div>
+
+<div class="use-case-card">
+  <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=600&q=80" alt="Party" class="use-case-img">
+  <div class="use-case-content">
+    <h3 class="use-case-title">Medium-Sized Parties & Game Nights</h3>
+    <p class="use-case-text">Pick your theme, vibe, and timing — ShowRunner takes care of shoutouts, energy shifts, and games night intros.</p>
+  </div>
+</div>
+
+</section>
+
+<script>
+  const fullText = "Plan the night. Run the show.";
+  const breakPoint = fullText.indexOf("Run the show.");
+  const typewriter = document.getElementById("typewriter");
+  const cursor = document.querySelector(".cursor");
+  let i = 0;
+
+  function type() {
+    if (i < fullText.length) {
+      if (i < breakPoint) {
+        typewriter.innerHTML += fullText.charAt(i);
+      } else if (i === breakPoint) {
+        const yellowSpan = document.createElement("span");
+        yellowSpan.style.color = "#d1a442";
+        yellowSpan.id = "highlighted";
+        yellowSpan.textContent = fullText.charAt(i);
+        typewriter.appendChild(yellowSpan);
+      } else {
+        document.getElementById("highlighted").textContent += fullText.charAt(i);
+      }
+      i++;
+      setTimeout(type, 60);
+    } else {
+      cursor.style.display = "none";
+    }
+  }
+
+  window.onload = type;
+</script>
+
+<footer>
+  © 2025 ShowRunner — All rights reserved.
+</footer>
+
+</body>
+</html>
